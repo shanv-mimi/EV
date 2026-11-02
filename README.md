@@ -74,6 +74,10 @@ An interactive Electric Vehicle (EV) market analytics website built with **Pytho
 
 The included `render.yaml` and `Procfile` provide the same deployment commands.
 
+## Run
+
+https://ev-3hi4.onrender.com/
+
 ## Project structure
 
 ```text
