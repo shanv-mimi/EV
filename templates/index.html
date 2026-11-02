@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="eyebrow"><i></i> ELECTRIC MOBILITY / DATA INTELLIGENCE</div>
+    <h1>THE FUTURE<br>IS <span>IN MOTION.</span></h1>
+    <p>{{ project.description }}</p>
+    <div class="actions">
+      <a class="btn primary" href="{{ url_for('market_overview') }}">Explore market overview <b>↗</b></a>
+      <a class="btn ghost" href="{{ url_for('story') }}">View the data story <b>→</b></a>
+    </div>
+    <div class="hero-caption"><span></span> ELECTRIC VEHICLE MARKET PERFORMANCE & INSIGHTS</div>
+  </div>
+  <div class="orb" aria-hidden="true"><div class="orb-inner">EV<span>+</span></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orb-caption">DRIVE THE<br>TRANSITION</div></div>
+  <div class="hero-bottom">MARKET · PERFORMANCE · INSIGHTS</div>
+</section>
+
+<section class="section intro">
+  <div class="kicker">THE PROJECT</div>
+  <div class="intro-grid">
+    <h2>UNDERSTAND<br>THE <span>EV SHIFT.</span></h2>
+    <p>Electric mobility is changing the automotive landscape. This project brings together interactive Tableau visualizations to make the EV market easier to explore, compare and understand.</p>
+  </div>
+  <div class="cards">
+    {% for number, title, desc, route in project.focus_areas %}
+    <a class="card" href="{{ route }}">
+      <div class="card-top"><span>{{ number }} / EXPLORE</span><b>↗</b></div>
+      <div class="card-symbol">{{ '◉' if number == '01' else ('⌁' if number == '02' else '▤') }}</div>
+      <h3>{{ title }}</h3><p>{{ desc }}</p><span class="card-link">Open visualization →</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="statement">
+  <div class="section statement-inner"><div><div class="kicker">DATA INTO DIRECTION</div><h2>SEE THE MARKET.<br><span>READ THE SIGNALS.</span></h2></div><a class="btn primary" href="{{ url_for('performance_analysis') }}">Explore performance ↗</a></div>
+</section>
+
+<section class="section toolkit">
+  <div class="kicker">THE TECHNOLOGY</div><h2>ANALYTICS MEETS <span>EXPERIENCE.</span></h2>
+  <p class="muted">A lightweight web experience connecting Tableau Public visualizations through a Flask application.</p>
+  <div class="tech">{% for item in project.technologies %}<span>{{ item }}</span>{% endfor %}</div>
+</section>
+{% endblock %}

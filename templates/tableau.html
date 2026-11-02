@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ pages[page].title }} · {{ project.name }}{% endblock %}
+{% block content %}
+<section class="page-head">
+  <div class="kicker">{{ pages[page].eyebrow }}</div>
+  <h1>{{ pages[page].title|upper }}<span>.</span></h1>
+  <p>{{ pages[page].description }}</p>
+  <div class="live"><i></i> TABLEAU PUBLIC / INTERACTIVE VIEW</div>
+</section>
+<section class="section viz-section">
+  <div class="viz-title"><div><div class="kicker">EXPLORE THE VISUALIZATION</div><h2>{{ pages[page].title }}</h2></div>
+    <a class="btn ghost small-btn" href="{{ pages[page].public }}" target="_blank" rel="noopener">Open in Tableau ↗</a></div>
+  <div class="viz-frame">
+    <iframe src="{{ pages[page].embed }}" title="{{ pages[page].title }}" loading="lazy" allowfullscreen></iframe>
+  </div>
+  <p class="hint">The visualization is hosted by Tableau Public and requires an internet connection. If it does not appear, open it directly in Tableau using the link above.</p>
+</section>
+<section class="section next"><div><div class="kicker">KEEP EXPLORING</div><h2>THERE'S MORE TO <span>DISCOVER.</span></h2></div><a class="btn primary" href="{{ pages[page].next }}">{{ pages[page].next_label }} →</a></section>
+{% endblock %}

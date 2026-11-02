@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ project.description }}">
+  <meta name="theme-color" content="#071311">
+  <title>{% block title %}{{ project.name }}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="header">
+  <a class="brand" href="{{ url_for('home') }}"><span class="brand-icon">EV</span><span>MARKET <b>INTELLIGENCE</b></span></a>
+  <button class="menu-button" aria-label="Toggle menu" onclick="document.querySelector('.nav').classList.toggle('open')">☰</button>
+  <nav class="nav">
+    <a href="{{ url_for('home') }}" class="{{ 'active' if request.endpoint == 'home' else '' }}">Home</a>
+    <a href="{{ url_for('market_overview') }}" class="{{ 'active' if request.endpoint == 'market_overview' else '' }}">Market Overview</a>
+    <a href="{{ url_for('performance_analysis') }}" class="{{ 'active' if request.endpoint == 'performance_analysis' else '' }}">Performance</a>
+    <a href="{{ url_for('story') }}" class="{{ 'active' if request.endpoint == 'story' else '' }}">Story</a>
+  </nav>
+</header>
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer">
+  <a class="brand" href="{{ url_for('home') }}"><span class="brand-icon small">EV</span><span>EV MARKET <b>INTELLIGENCE</b></span></a>
+  <span>Explore the data shaping electric mobility.</span>
+  <span class="foot-muted">Built with Flask + Tableau Public</span>
+</footer>
+</body>
+</html>
